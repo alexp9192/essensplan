@@ -22,3 +22,41 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+.controller ("ListCtrl", function($scope, $http){
+
+    $scope.test = "123";
+    $http.get ("js/meineRezepte.json").then( function(data) {
+
+      $scope.generierteGerichtsliste = [];
+      allData = data.data;
+      for(number in allData)
+      {
+        let zufaelligesGericht = {};
+        zufaelligesGericht.name = allData[number].name;
+        zufaelligesGericht.id = allData[number].id;
+        zufaelligesGericht.tag = berechneWochentag(number);
+
+        $scope.generierteGerichtsliste.push(zufaelligesGericht)
+      }
+console.log($scope.generierteGerichtsliste);
+
+
+    })
+})
+
+function berechneWochentag(verschiebung){
+
+  var weekday = new Array(7);
+  weekday[0] =  "Sonntag";
+  weekday[1] = "Montag";
+  weekday[2] = "Dienstag";
+  weekday[3] = "Mittwoch";
+  weekday[4] = "Donnerstag";
+  weekday[5] = "Freitag";
+  weekday[6] = "Samstag";
+
+  let curentDay =new Date().getDay();
+  let day = (curentDay+1*verschiebung)%7;
+  return weekday[day];
+}

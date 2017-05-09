@@ -1,0 +1,38 @@
+[
+  {
+    "id":1,
+    "name":"Tomatensuppe"
+  },
+  {
+    "id":2,
+    "name":"Pizza"
+  },
+  {
+    "id":3,
+    "name":"Flammkuchen"
+  },
+  {
+    "id":4,
+    "name":"Spaghetti Carbonara"
+  },
+  {
+    "id":5,
+    "name":"Nudelauflauf"
+  },
+  {
+    "id":6,
+    "name":"Sandwiches"
+  },
+  {
+    "id":7,
+    "name":"Panini"
+  },
+  {
+    "id":8,
+    "name":"Kartoffel-Hack-Auflauf"
+  },
+  {
+    "id":9,
+    "name":"Hamburger"
+  }
+]
