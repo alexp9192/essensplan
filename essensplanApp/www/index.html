@@ -31,7 +31,7 @@
   </head>
   <body ng-app="starter">
 
-    <ion-pane>
+    <ion-pane ng-controller="ListCtrl">
       <ion-header-bar class="bar-stable">
         <h1 class="title">
           Die Essensplaner App
@@ -43,15 +43,15 @@
           Wie viele Tage möchten Sie planen?
         </label>
         <label class="item-input-wrapper">
-          <input type="number" placeholder="Tage">
+          <input type="number" ng-model="gewuenschteAnzahl">
         </label>
-        <a class=" button button-positive button-outline item-button-right">
+        <a class=" button button-positive button-outline item-button-right" ng-click="refresh()">
           Plan generieren
         </a>
       </div>
 
       <ion-content class="has-subheader">
-        <div class="list" ng-controller="ListCtrl">
+        <div class="list">
           <div class="item item-divider">Die Gerichteauswahl:</div>
           <a href="#" class="item item-icon-left" ng-repeat="gericht in generierteGerichtsliste">
             <i class="icon ion-pizza"></i>

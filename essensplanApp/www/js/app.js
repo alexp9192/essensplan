@@ -25,25 +25,45 @@ angular.module('starter', ['ionic'])
 
 .controller ("ListCtrl", function($scope, $http){
 
-    $scope.test = "123";
-    $http.get ("js/meineRezepte.json").then( function(data) {
+  $scope.allData = {};
+  $scope.gewuenschteAnzahl = 0;
+
+  $scope.refresh = function () {
+
+      let allData = $scope.allData;
+
+      let vorhandeneAnzahl = allData.length ;
+    if(vorhandeneAnzahl < $scope.gewuenschteAnzahl )
+      {
+        $scope.gewuenschteAnzahl = vorhandeneAnzahl;
+      }
+
+      var randomNumbers = [];
+      while(randomNumbers.length < $scope.gewuenschteAnzahl) {
+        var randomNum = Math.floor(Math.random() * (vorhandeneAnzahl));
+        if (randomNumbers.indexOf(randomNum) == -1) {
+          randomNumbers.push(randomNum);
+        }
+      }
 
       $scope.generierteGerichtsliste = [];
-      allData = data.data;
-      for(number in allData)
+      for(number in randomNumbers)
       {
         let zufaelligesGericht = {};
-        zufaelligesGericht.name = allData[number].name;
-        zufaelligesGericht.id = allData[number].id;
+        zufaelligesGericht.name = allData[randomNumbers[number]].name;
+        zufaelligesGericht.id = allData[randomNumbers[number]].id;
         zufaelligesGericht.tag = berechneWochentag(number);
 
         $scope.generierteGerichtsliste.push(zufaelligesGericht)
       }
-console.log($scope.generierteGerichtsliste);
+    }
 
+  $http.get ("js/meineRezepte.json").then( function(data) {
+    $scope.allData = data.data;
+  })
 
-    })
-})
+});
+
 
 function berechneWochentag(verschiebung){
 
