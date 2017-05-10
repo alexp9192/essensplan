@@ -27,18 +27,20 @@ angular.module('starter', ['ionic'])
 
   $scope.allData = {};
   $scope.gewuenschteAnzahl = 0;
+  $scope.generierteGerichtsliste = [];
 
   $scope.refresh = function () {
 
       let allData = $scope.allData;
-
       let vorhandeneAnzahl = allData.length ;
-    if(vorhandeneAnzahl < $scope.gewuenschteAnzahl )
+
+      if(vorhandeneAnzahl < $scope.gewuenschteAnzahl )
       {
         $scope.gewuenschteAnzahl = vorhandeneAnzahl;
       }
 
       var randomNumbers = [];
+
       while(randomNumbers.length < $scope.gewuenschteAnzahl) {
         var randomNum = Math.floor(Math.random() * (vorhandeneAnzahl));
         if (randomNumbers.indexOf(randomNum) == -1) {
@@ -47,6 +49,7 @@ angular.module('starter', ['ionic'])
       }
 
       $scope.generierteGerichtsliste = [];
+
       for(number in randomNumbers)
       {
         let zufaelligesGericht = {};
@@ -67,7 +70,7 @@ angular.module('starter', ['ionic'])
 
 function berechneWochentag(verschiebung){
 
-  var weekday = new Array(7);
+  let weekday = new Array(7);
   weekday[0] =  "Sonntag";
   weekday[1] = "Montag";
   weekday[2] = "Dienstag";
