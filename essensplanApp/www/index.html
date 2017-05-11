@@ -31,26 +31,27 @@
   </head>
   <body ng-app="starter">
 
-    <ion-pane ng-controller="ListCtrl">
+    <ion-pane>
       <ion-header-bar class="bar-stable">
         <h1 class="title">
           Die Essensplaner App
         </h1>
       </ion-header-bar>
 
-      <div class="bar bar-subheader item-input-inset">
-        <label class="item-content padding-right">
-          Wie viele Tage möchten Sie planen? (max. {{allData.length}})
-        </label>
-        <label class="item-input-wrapper">
-          <input type="number" ng-model="gewuenschteAnzahl">
-        </label>
-        <a class=" button button-positive button-outline item-button-right" ng-click="refresh()">
-          Plan generieren
-        </a>
-      </div>
+      <ion-content ng-controller="ListCtrl">
+        <br>
+          <label class="item-content padding-right">
+            Wie viele Tage möchten Sie planen? (max. {{allData.length}})
+          </label>
+          <label>
+            <input type="number" ng-model="gewuenschteAnzahl">
+          </label>
+          <a class=" button button-positive button-outline block" ng-click="refresh()">
+            Plan generieren
+          </a>
 
-      <ion-content class="has-subheader">
+        </br>
+        </div>
         <div class="list" ng-if="generierteGerichtsliste.length>0">
           <div class="item item-divider">Die Gerichteauswahl:</div>
           <a href="#" class="item item-icon-left" ng-repeat="gericht in generierteGerichtsliste">

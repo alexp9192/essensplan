@@ -23,6 +23,7 @@ angular.module('starter', ['ionic'])
   });
 })
 
+
 .controller ("ListCtrl", function($scope, $http){
 
   $scope.allData = {};
